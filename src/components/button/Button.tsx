@@ -4,12 +4,13 @@ interface ButtonProps {
   content: string;
   bgColor: string;
   textColor: string;
+  onClick?: () => void;
 }
 
-const Button = (props: ButtonProps) => {
+function Button(props: ButtonProps) {
   return (
     <button
-      type="submit"
+      onClick={props.onClick}
       className={`${props.bgColor} ${props.textColor} p-2 rounded-md border-1 border-black cursor-pointer
                   transition-opacity duration-300 hover:opacity-90
                   w-[100%]
@@ -18,6 +19,6 @@ const Button = (props: ButtonProps) => {
       {props.content}
     </button>
   );
-};
+}
 
 export default Button;

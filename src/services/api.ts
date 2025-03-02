@@ -11,11 +11,9 @@ interface EnderecoResponse {
   uf: string;
 }
 
-export const getCEP = async (cep: string): Promise<EnderecoResponse[]> => {
+export const searchCEP = async (cep: string): Promise<EnderecoResponse> => {
   try {
-    const response = await axios.get<EnderecoResponse[]>(
-      `${apiURL}/${cep}/json`
-    );
+    const response = await axios.get<EnderecoResponse>(`${apiURL}/${cep}/json`);
     return response.data;
   } catch (error) {
     throw new Error("Error fetching CEP data");
