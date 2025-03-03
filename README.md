@@ -1,54 +1,40 @@
-# React + TypeScript + Vite
+<h1>
+    <p>Desafio Técnico - Desenvolvedor(a) Frontend</p>
+</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🧑‍💻 Preview
 
-Currently, two official plugins are available:
+<p align="center">
+    <img src="https://github.com/gui18br/desafio-tecnico-consulta-enderecos/blob/main/src/assets/preview.png?raw=true" width="700" height="400"  />
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📖 About
 
-## Expanding the ESLint configuration
+O projeto consiste em um desafio técnico proposto para se criar uma aplicação em **React** com **TypeScript** e **TailwindCSS** que permita o usuário consultar endereços via API do ViaCEP, armazená-los localmente e listá-los.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📓 Explanation
+O projeto foi desenvolvido como um todo se baseando em componentes funcionais com a utlização de Hooks para o gerenciamente de estado. Foi feita principalmente a utlização do Hook **useState** para manter e alterar o estado de componentes que necessitavam de atualizações conforme funções fossem executadas através de ações requisitadas pelo usuário, como 'Buscar' e 
+'Salvar'. Optou-se por utilizar o **localStorage** para o armazenamento dos endereços salvos e a utilização própria do **useState** para o cache das consultas na sessão atual do usuário, evitando um looping de requisições seguidas para um mesmo CEP já requisitado. O design do projeto segue a responsividade traga pelo **TailwindCSS** e com o mesmo foi feito um refinamento para o mobile. Por fim, utilizou-se do **Vite** para a criação do projeto **React**, pois o mesmo permite uma rápida configuração e inicialização do projeto.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 👷‍♂️ Installation Instructions
+
+Para instalar as dependências, utilize este comando:
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Para iniciar o projeto, utilize o comando:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm run dev
 ```
+
+## 🔨 Tools
+
+- [TypeScript](https://www.typescriptlang.org/docs/)
+- [React](https://react.dev/)
+- [TailwindCSS](https://tailwindcss.com/docs/installation)
+- [Vite](https://vitejs.dev/guide/)
