@@ -85,7 +85,7 @@ function Forms(props: EnderecosSalvos) {
   };
 
   return (
-    <div className="flex flex-col justify-center text-center w-100% ">
+    <div className="flex flex-col justify-center text-center pb-10 sm:pb-0">
       <Title />
       <div>
         <InputLabel

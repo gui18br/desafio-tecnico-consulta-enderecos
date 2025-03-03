@@ -9,13 +9,13 @@ interface EnderecoProps {
 
 function Endereco(props: EnderecoProps) {
   return (
-    <div className="flex gap-3 border-2 border-green-900 p-2 rounded-md bg-[#242424] text-white">
+    <div className="flex justify-between gap-3 border-2 border-green-900 p-2 rounded-md bg-[#242424] text-white">
       <div>
         <p>{props.localidade ?? ""}</p>
-        <p>{props.cep ?? ""}</p>
         <p>{props.bairro ?? ""}</p>
         <p>{props.logradouro ?? ""}</p>
         <p>{props.complemento ?? ""}</p>
+        <p>{props.cep ?? ""}</p>
       </div>
       <p> - </p>
       <p>{props.uf ?? ""}</p>

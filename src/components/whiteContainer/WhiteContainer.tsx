@@ -24,7 +24,7 @@ function WhiteContainer() {
   }, []);
 
   return (
-    <div className="bg-white p-10 rounded-sm border-1 border-black flex gap-10">
+    <div className="bg-white p-10 rounded-sm border-1 border-black sm:flex gap-10">
       <Forms
         enderecos={enderecosSalvos}
         setEnderecosSalvos={setEnderecosSalvos}
