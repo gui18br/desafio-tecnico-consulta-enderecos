@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
+import { searchCEP } from "../../services/api";
 import Buttons from "../buttons/Buttons";
 import InputLabel from "../inputLabel/InputLabel";
 import Title from "../title/Title";
-import { searchCEP } from "../../services/api";
 import InformationContainer from "../informationContainer/InformationContainer";
 
 interface FormValues {
@@ -18,7 +18,12 @@ interface EnderecoResponse {
   uf: string;
 }
 
-function Forms() {
+interface EnderecosSalvos {
+  enderecos: EnderecoResponse[];
+  setEnderecosSalvos: Dispatch<SetStateAction<EnderecoResponse[]>>;
+}
+
+function Forms(props: EnderecosSalvos) {
   const [formValues, setFormValues] = useState<FormValues>({
     cep: "",
   });
@@ -32,6 +37,10 @@ function Forms() {
     uf: "",
   });
 
+  const [enderecosPesquisados, setEnderecosPesquisados] = useState<
+    EnderecoResponse[]
+  >([]);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormValues({
@@ -40,18 +49,43 @@ function Forms() {
     });
   };
 
+  const handleCEPRegisterExists = (cep: string) => {
+    return enderecosPesquisados.find((enderecoAtual: EnderecoResponse) => {
+      return enderecoAtual.cep == cep;
+    });
+  };
+
   const handleSearchCEP = async () => {
+    let cep = (document.getElementById("cep") as HTMLInputElement).value;
     try {
-      const cep = (document.getElementById("cep") as HTMLInputElement).value;
-      const result = await searchCEP(cep);
-      setEndereco(result);
+      const cepExists = handleCEPRegisterExists(cep);
+      if (cepExists == undefined) {
+        const result = await searchCEP(cep);
+        setEndereco(result);
+        setEnderecosPesquisados([...enderecosPesquisados, result]);
+      } else {
+        setEndereco(cepExists);
+      }
     } catch (error) {
       console.error(error);
     }
   };
 
+  const handleSaveEndereco = () => {
+    if (endereco.cep != "") {
+      props.setEnderecosSalvos([...props.enderecos, endereco]);
+      let enderecosToSave = JSON.parse(
+        localStorage.getItem("enderecosSalvos") || "[]"
+      );
+
+      enderecosToSave.push(endereco);
+
+      localStorage.setItem("enderecosSalvos", JSON.stringify(enderecosToSave));
+    }
+  };
+
   return (
-    <div className="flex flex-col justify-center text-center w-100%">
+    <div className="flex flex-col justify-center text-center w-100% ">
       <Title />
       <div>
         <InputLabel
@@ -59,10 +93,13 @@ function Forms() {
           name="cep"
           value={formValues.cep}
           onChange={handleInputChange}
+          onBlur={handleSearchCEP}
         />
-        <Buttons onClickSearchButton={handleSearchCEP} />
+        <Buttons
+          onClickSearchButton={handleSearchCEP}
+          onClickSaveButton={handleSaveEndereco}
+        />
       </div>
-
       <div className="flex flex-col text-left gap-1 mt-7">
         <InformationContainer label="UF">{endereco.uf}</InformationContainer>
         <InformationContainer label="Cidade">

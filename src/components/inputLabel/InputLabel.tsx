@@ -3,6 +3,7 @@ interface InputProps {
   value: string;
   name: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function InputLabel(props: InputProps) {
@@ -15,6 +16,7 @@ function InputLabel(props: InputProps) {
         name={props.name}
         value={props.value}
         onChange={props.onChange}
+        onBlur={props.onBlur}
         className="bg-blue-50 text-black rounded-sm p-1 border-black border-1"
       />
     </div>

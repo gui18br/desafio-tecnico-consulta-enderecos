@@ -1,11 +1,11 @@
 import Button from "../button/Button";
 
-interface ButtonOneProps {
+interface ButtonProps {
   onClickSearchButton?: () => void;
   onClickSaveButton?: () => void;
 }
 
-function Buttons(props: ButtonOneProps) {
+function Buttons(props: ButtonProps) {
   return (
     <div className="flex justify-center gap-2 w-[100%]">
       <Button
