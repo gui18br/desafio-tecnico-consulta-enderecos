@@ -14,7 +14,7 @@ O projeto consiste em um desafio técnico proposto para se criar uma aplicação
 
 ## 📓 Explanation
 O projeto foi desenvolvido como um todo se baseando em componentes funcionais com a utlização de Hooks para o gerenciamente de estado. Foi feita principalmente a utlização do Hook **useState** para manter e alterar o estado de componentes que necessitavam de atualizações conforme funções fossem executadas através de ações requisitadas pelo usuário, como 'Buscar' e 
-'Salvar'. Optou-se por utilizar o **localStorage** para o armazenamento dos endereços salvos e a utilização própria do **useState** para o cache das consultas na sessão atual do usuário, evitando um looping de requisições seguidas para um mesmo CEP já requisitado. O design do projeto segue a responsividade traga pelo **TailwindCSS** e com o mesmo foi feito um refinamento para o mobile. Por fim, utilizou-se do **Vite** para a criação do projeto **React**, pois o mesmo permite uma rápida configuração e inicialização do projeto.
+'Salvar'. Optou-se por utilizar o **localStorage** para o armazenamento dos endereços salvos e a utilização própria do **useState** para o cache das consultas na sessão atual do usuário, evitando um looping de requisições seguidas para um mesmo CEP já requisitado. Para o consumo e a requisição da API, se utilizou da biblioteca **Axios**. O design do projeto segue a responsividade traga pelo **TailwindCSS** e com o mesmo foi feito um refinamento para o mobile. Por fim, utilizou-se do **Vite** para a criação do projeto **React**, pois o mesmo permite uma rápida configuração e inicialização do projeto.
 
 ## 👷‍♂️ Installation Instructions
 
@@ -38,3 +38,4 @@ npm run dev
 - [React](https://react.dev/)
 - [TailwindCSS](https://tailwindcss.com/docs/installation)
 - [Vite](https://vitejs.dev/guide/)
+- [Axios](https://axios-http.com/ptbr/docs/intro)
