@@ -57,17 +57,21 @@ function Forms(props: EnderecosSalvos) {
 
   const handleSearchCEP = async () => {
     let cep = (document.getElementById("cep") as HTMLInputElement).value;
-    try {
-      const cepExists = handleCEPRegisterExists(cep);
-      if (cepExists == undefined) {
-        const result = await searchCEP(cep);
-        setEndereco(result);
-        setEnderecosPesquisados([...enderecosPesquisados, result]);
-      } else {
-        setEndereco(cepExists);
+    if (cep != "") {
+      try {
+        const cepExists = handleCEPRegisterExists(cep);
+        if (cepExists == undefined) {
+          const result = await searchCEP(cep);
+          setEndereco(result);
+          setEnderecosPesquisados([...enderecosPesquisados, result]);
+        } else {
+          setEndereco(cepExists);
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
+    } else {
+      alert("Campo obrigatório não preenchido!");
     }
   };
 
